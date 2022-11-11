@@ -6,10 +6,12 @@ namespace AzureServiceBus
 {
     public class Topic1
     {
+        private readonly AccountService _accountService;
         private readonly ILogger<Topic1> _logger;
 
-        public Topic1(ILogger<Topic1> log)
+        public Topic1(ILogger<Topic1> log, AccountService accountService)
         {
+            _accountService = accountService;
             _logger = log;
         }
 
@@ -24,12 +26,8 @@ namespace AzureServiceBus
             _logger.LogInformation($"EnqueuedTimeUtc={enqueuedTimeUtc}");
             _logger.LogInformation($"DeliveryCount={deliveryCount}");
             _logger.LogInformation($"MessageId={messageId}");
-        }
+            _accountService.Create(account)
+;        }
 
-        public class Account
-        {
-            public int Id { get; set; }
-            public string Name { get; set; }
-        }
     }
 }
