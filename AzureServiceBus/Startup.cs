@@ -12,7 +12,7 @@ namespace AzureServiceBus
         {
             builder.Services.AddTransient<AccountService>();
 
-            var connectionString = Environment.GetEnvironmentVariable("CognaStorage");
+            var connectionString = Environment.GetEnvironmentVariable("StorageAccount");
             builder.Services.AddSingleton(new BlobServiceClient(connectionString));
         }
     }

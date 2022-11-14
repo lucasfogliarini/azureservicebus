@@ -1,8 +1,9 @@
 {
     "IsEncrypted": false,
-    "Values": {
+  "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-    "CognaMessages": "Endpoint=sb://cogna-messages.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey={secret}"
+    "AzureServiceBus": "veja em > https://porta.azure.com > Service Bus Namespace > Shared Access policies > RootManageSharedAccessKey > Primary ConnectionString",
+    "StorageAccount": "veja em > https://porta.azure.com > Storage Account > AccessKeys > Key1 ConnectionString"
   }
 }

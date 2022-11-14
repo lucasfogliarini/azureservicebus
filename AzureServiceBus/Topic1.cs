@@ -18,7 +18,7 @@ namespace AzureServiceBus
         }
 
         [FunctionName("Topic1")]
-        public void Run([ServiceBusTrigger("topic1", "sub1", Connection = "CognaMessages")]
+        public void Run([ServiceBusTrigger("topic1", "sub1", Connection = "AzureServiceBus")]
                         Account account,
                         Int32 deliveryCount,
                         DateTime enqueuedTimeUtc,
@@ -30,10 +30,11 @@ namespace AzureServiceBus
             _logger.LogInformation($"MessageId={messageId}");
 
             var container1 = _blobServiceClient.GetBlobContainerClient("container1");
-            var athenas = container1.GetBlobClient("athenas.png");
-            var athenasContent = athenas.DownloadContent();
-            var athenasBytes = athenasContent.Value.Content.ToArray();
-            var athenasStream = athenasContent.Value.Content.ToStream();
+            var blob = container1.GetBlobClient("athenas.png");
+            var blobDowloadedContent = blob.DownloadContent();
+            var blobContent = blobDowloadedContent.Value.Content;
+            var blobBytes = blobContent.ToArray();
+            var blobStream = blobContent.ToStream();
         }
     }
 }
